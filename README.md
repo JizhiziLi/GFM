@@ -11,14 +11,14 @@ This repository contains the code, datasets, models, test results and a video de
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
 ![](demo/gfm.png)
 
-We train GFM with three backbone, `-(d)` [DenseNet-121](), `-(r)` [ResNet-34](), and `-(r2b)` [ResNet-34 with 2 blocks](). The trained model for each backbone can be downloaded via the link listed below.
+We train GFM with three backbone, `-(d)` [DenseNet-121](), `-(r)` [ResNet-34](), and `-(r2b)` [ResNet-34 with 2 more blocks](). The trained model for each backbone can be downloaded via the link listed below.
 
 | GFM (d)) | GFM (r) | GFM (r2b)|
 | :----:| :----: | :----: |
 |    [weights]()   | [weights]()  |   [weights]() |
 
 
-Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the video demo. You can request this dataset by filling out this form. 
+Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the video demo.
 ![](demo/am2k_small.png)
 
 Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background image excluded salient objects. Some examples are shown as below, more can be viewed in the video demo.
@@ -26,7 +26,7 @@ Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background 
 
 ## Test Results
 
-We test GFM on our AM-2k test dataset and show the results as below.
+We test GFM on our AM-2k test dataset and show the results as below. More results can be found [here](https://github.com/JizhiziLi/animal-matting/demo/).
 
 <img src="demo/sample3.jpg" width="50%"><img src="demo/sample3.png" width="50%">
 
@@ -35,7 +35,9 @@ We test GFM on our AM-2k test dataset and show the results as below.
 <img src="demo/sample2.jpg" width="50%"><img src="demo/sample2.png" width="50%">
 
 
-We also have a video demo to illustrate our motivation, our method GFM, proposed dataset AM-2k, BG-20k and the test result on an animal video, which can be viewed in this [link](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
+We also have a video demo to illustrate the motivation, our GFM for end-to-end animal image matting, the proposed dataset AM-2k and BG-20k, and the test result on an animal video, which can be viewed in this [link](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
+
+The two datasets (AM-2k and BG-20k) can be requested by filling out this [form](), please note that you can only use them for research purpose. 
 
 
 
