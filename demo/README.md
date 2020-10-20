@@ -1,6 +1,6 @@
 # More Results Demo
 
-We illustrate more results of our trained model on AM-2k dataset as follows.
+We present more results of our trained model on AM-2k dataset as follows.
 
 <img src="src/sample8.jpg" width="50%"><img src="src/sample8.png" width="50%">
 
