@@ -30,7 +30,7 @@ Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background 
 
 ## Test Results
 
-We test GFM on our AM-2k test dataset and show the results as below. More results can be found [here](https://github.com/JizhiziLi/animal-matting/demo/).
+We test GFM on our AM-2k test dataset and show the results as below. More results can be found [here](https://github.com/JizhiziLi/animal-matting/tree/master/demo/).
 
 <img src="demo/src/sample3.jpg" width="50%"><img src="demo/sample3.png" width="50%">
 
