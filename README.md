@@ -22,7 +22,7 @@ We train GFM with three backbone, `-(d)` [DenseNet-121](), `-(r)` [ResNet-34](),
 
 ## AM-2k
 Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the video demo.
-![](demo/src/am2k_small.png)
+![](demo/src/am2k.png)
 
 ## BG-20k
 Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background image excluded salient objects. Some examples are shown as below, more can be viewed in the video demo.
@@ -32,11 +32,11 @@ Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background 
 
 We test GFM on our AM-2k test dataset and show the results as below. More results can be found [here](https://github.com/JizhiziLi/animal-matting/tree/master/demo/).
 
-<img src="demo/src/sample3.jpg" width="50%"><img src="demo/sample3.png" width="50%">
+<img src="demo/src/sample3.jpg" width="50%"><img src="demo/src/sample3.png" width="50%">
 
-<img src="demo/src/sample1.jpg" width="50%"><img src="demo/sample1.png" width="50%">
+<img src="demo/src/sample1.jpg" width="50%"><img src="demo/src/sample1.png" width="50%">
 
-<img src="demo/src/sample2.jpg" width="50%"><img src="demo/sample2.png" width="50%">
+<img src="demo/src/sample2.jpg" width="50%"><img src="demo/src/sample2.png" width="50%">
 
 
 We also have a video demo to illustrate the motivation, our GFM for end-to-end animal image matting, the proposed dataset AM-2k and BG-20k, and the test result on an animal video, which can be viewed in this [link](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
