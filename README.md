@@ -14,18 +14,18 @@ etc -->
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
 ![](demo/src/gfm.png)
 
-We train GFM with three backbone, `-(d)` [DenseNet-121](), `-(r)` [ResNet-34](), and `-(r2b)` [ResNet-34 with 2 more blocks](). The trained model for each backbone can be downloaded via the link listed below.
+We trained GFM with three backbones, `-(d)` [DenseNet-121](), `-(r)` [ResNet-34](), and `-(r2b)` [ResNet-34 with 2 more blocks](). The trained model for each backbone can be downloaded via the link listed below.
 
 | GFM (d)) | GFM (r) | GFM (r2b)|
 | :----:| :----: | :----: |
 |    [weights]()   | [weights]()  |   [weights]() |
 
 ## AM-2k
-Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the video demo.
+Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the [video demo](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
 ![](demo/src/am2k.png)
 
 ## BG-20k
-Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background image excluded salient objects. Some examples are shown as below, more can be viewed in the video demo.
+Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background images excluded salient objects. Some examples are shown as below, more can be viewed in the [video demo](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
 ![](demo/src/bg20k.jpg)
 
 ## Test Results
