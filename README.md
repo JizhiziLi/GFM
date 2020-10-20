@@ -12,7 +12,7 @@ etc -->
 
 ## GFM
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
-![](demo/gfm.png)
+![](demo/src/gfm.png)
 
 We train GFM with three backbone, `-(d)` [DenseNet-121](), `-(r)` [ResNet-34](), and `-(r2b)` [ResNet-34 with 2 more blocks](). The trained model for each backbone can be downloaded via the link listed below.
 
@@ -22,21 +22,21 @@ We train GFM with three backbone, `-(d)` [DenseNet-121](), `-(r)` [ResNet-34](),
 
 ## AM-2k
 Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the video demo.
-![](demo/am2k_small.png)
+![](demo/src/am2k_small.png)
 
 ## BG-20k
 Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background image excluded salient objects. Some examples are shown as below, more can be viewed in the video demo.
-![](demo/bg20k.jpg)
+![](demo/src/bg20k.jpg)
 
 ## Test Results
 
 We test GFM on our AM-2k test dataset and show the results as below. More results can be found [here](https://github.com/JizhiziLi/animal-matting/demo/).
 
-<img src="demo/sample3.jpg" width="50%"><img src="demo/sample3.png" width="50%">
+<img src="demo/src/sample3.jpg" width="50%"><img src="demo/sample3.png" width="50%">
 
-<img src="demo/sample1.jpg" width="50%"><img src="demo/sample1.png" width="50%">
+<img src="demo/src/sample1.jpg" width="50%"><img src="demo/sample1.png" width="50%">
 
-<img src="demo/sample2.jpg" width="50%"><img src="demo/sample2.png" width="50%">
+<img src="demo/src/sample2.jpg" width="50%"><img src="demo/sample2.png" width="50%">
 
 
 We also have a video demo to illustrate the motivation, our GFM for end-to-end animal image matting, the proposed dataset AM-2k and BG-20k, and the test result on an animal video, which can be viewed in this [link](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
