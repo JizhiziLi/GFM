@@ -8,6 +8,8 @@ etc -->
 <!-- ## Introduction -->
 This repository contains the code, datasets, models, test results and a video demo in the paper [End-to-end Animal Image Matting](). We propose a novel Glance and Focus Matting network (<strong>GFM</strong>), which employs a shared encoder and two separate decoders to learn both tasks in a collaborative manner for end-to-end animal matting. We also establish a novel Animal Matting dataset (<strong>AM-2k</strong>) to serve for end-to-end matting task. Furthermore, we investigate the domain gap issue between composition images and natural images systematically, propose a carefully designed composite route <strong>RSSN</strong> and a large-scale high-resolution background dataset (<strong>BG-20k</strong>) to serve as a better candidate for composition. 
 
+
+## GFM
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
 ![](demo/gfm.png)
 
@@ -17,10 +19,11 @@ We train GFM with three backbone, `-(d)` [DenseNet-121](), `-(r)` [ResNet-34](),
 | :----:| :----: | :----: |
 |    [weights]()   | [weights]()  |   [weights]() |
 
-
+## AM-2k
 Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the video demo.
 ![](demo/am2k_small.png)
 
+## BG-20k
 Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background image excluded salient objects. Some examples are shown as below, more can be viewed in the video demo.
 ![](demo/bg20k.jpg)
 
