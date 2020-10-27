@@ -41,7 +41,8 @@ We test GFM on our AM-2k test dataset and show the results as below. More result
 
 We also have a video demo to illustrate the motivation, our GFM for end-to-end animal image matting, the proposed dataset AM-2k and BG-20k, and the test result on an animal video, which can be viewed in this [link](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
 
-The two datasets (AM-2k and BG-20k) can be requested by filling out this [form](), please note that you can only use them for research purpose. 
+The two datasets (AM-2k and BG-20k), training code, and the test code will be made publicly soon.
+<!-- can be requested by filling out this [form](), please note that you can only use them for research purpose.  -->
 
 
 
