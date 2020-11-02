@@ -11,7 +11,7 @@ etc -->
 
 We have released some pretrained models and the inference code in this repository. The two datasets (**AM-2k** and **BG-20k**), training code, test code, and the pretrained models will be made publicly soon.
 
-We also have a [video demo](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing) to illustrate the motivation, the network, the datasets, and the test results on an animal video.
+We have a [video demo](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing) to illustrate the motivation, the network, the datasets, and the test results on an animal video.
 
 ## GFM
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
