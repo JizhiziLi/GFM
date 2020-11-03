@@ -7,11 +7,12 @@ etc -->
 
 <!-- ## Introduction -->
 
-<p align="justify">This repository contains the code, datasets, models, test results and a video demo for the paper <a href="https://arxiv.org/pdf/2010.16188.pdf">End-to-end Animal Image Matting</a>. We propose a novel Glance and Focus Matting network (<strong>GFM</strong>), which employs a shared encoder and two separate decoders to learn both tasks in a collaborative manner for end-to-end animal matting. We also establish a novel Animal Matting dataset (<strong>AM-2k</strong>) to serve for end-to-end matting task. Furthermore, we investigate the domain gap issue between composition images and natural images systematically, propose a carefully designed composite route <strong>RSSN</strong> and a large-scale high-resolution background dataset (<strong>BG-20k</strong>) to serve as a better candidate for composition.</p>
+<p align="justify">This repository contains the code, datasets, models, test results and a video demo for the paper <a href="https://arxiv.org/pdf/2010.16188.pdf">End-to-end Animal Image Matting</a>. We propose a novel Glance and Focus Matting network (<strong>GFM</strong>), which employs a shared encoder and two separate decoders to learn both tasks in a collaborative manner for end-to-end animal matting. We also establish a novel Animal Matting dataset (<strong>AM-2k</strong>) to serve for end-to-end matting task. Furthermore, we investigate the domain gap issue between composition images and natural images systematically, propose a carefully designed composite route <strong>RSSN</strong> and a large-scale high-resolution background dataset (<strong>BG-20k</strong>) to serve as better candidates for composition.</p>
 
-We have released some pretrained models and the inference code in this repository. The two datasets (**AM-2k** and **BG-20k**), training code, test code, and the pretrained models will be made publicly soon.
+[Here](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing) is a video demo to illustrate the motivation, the network, the datasets, and the test results on an animal video.
 
-We have a [video demo](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing) to illustrate the motivation, the network, the datasets, and the test results on an animal video.
+The paper is currently under review. All the datasets (**AM-2k** and **BG-20k**), training code, test code, and the pretrained models will be made publicly soon.
+
 
 ## GFM
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
@@ -22,7 +23,7 @@ We trained GFM with three backbones, `-(d)` [DenseNet-121], `-(r)` [ResNet-34], 
 
 | GFM(d)-TT | GFM(r)-TT | GFM(r2b)-TT|
 | :----:| :----: | :----: | 
-|[model]()|[model]()|[model]()| 
+|coming soon|coming soon|coming soon| 
 
 
 ## AM-2k
@@ -45,5 +46,5 @@ We test GFM on our AM-2k test dataset and show the results as below. More result
 
 
 ## Statement
-This project is for research purpose only, please contact us for the licence of commercial use. For any other questions please contact [this email](mailto:jili8515@uni.sydney.edu.au).
+This project is for research purpose only, please contact us for the licence of commercial use. For any other questions please contact [jili8515@uni.sydney.edu.au](mailto:jili8515@uni.sydney.edu.au).
 
