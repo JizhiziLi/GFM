@@ -81,11 +81,11 @@ Here we provide the procedure of testing on sample images by our pretrained mode
 
 2. Save your sample images in folder `samples/original/.`
 
-3. Setup parameters in `scripts/test_samples.sh` and run it
+3. Setup parameters in `scripts/deploy_samples.sh` and run it
 
     `chmod +x scripts/*`
 
-    `./scripts/test_samples.sh`
+    `./scripts/deploy_samples.sh`
 
 4. The results of alpha matte and transparent color image will be saved in folder `samples/result_alpha/.` and `samples/result_color/.`
 
