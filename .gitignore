@@ -6,9 +6,4 @@
 tensorboard/*
 *.weights
 *.json
-*.py
-*.sh
-*.txt
-samples/*
-README-BACKUP.md
 

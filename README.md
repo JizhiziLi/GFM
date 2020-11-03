@@ -11,19 +11,18 @@ etc -->
 
 [Here](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing) is a video demo to illustrate the motivation, the network, the datasets, and the test results on an animal video.
 
-The paper is currently under review. All the datasets (**AM-2k** and **BG-20k**), training code, test code, and the pretrained models will be made publicly soon.
-
+We have released the inference code and a pretrained model, which can be found in the following sections. Since the paper is currently under review, the two datasets (**AM-2k** and **BG-20k**), training code and the rest pretrained models will be made public after review. 
 
 ## GFM
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
 ![](demo/src/gfm.png)
 
-We trained GFM with three backbones, `-(d)` [DenseNet-121], `-(r)` [ResNet-34], and `-(r2b)` [ResNet-34 with 2 extra blocks]. The trained model for each backbone can be downloaded via the link listed below.
+We trained GFM with three backbones, `-(d)` (DenseNet-121), `-(r)` (ResNet-34), and `-(r2b)` ([ResNet-34 with 2 extra blocks](core/network/e2e_resnet34_2b_gfm_tt.py)). The trained model for each backbone can be downloaded via the link listed below.
 
 
 | GFM(d)-TT | GFM(r)-TT | GFM(r2b)-TT|
 | :----:| :----: | :----: | 
-|coming soon|coming soon|coming soon| 
+|coming soon|coming soon|[model](https://drive.google.com/file/d/1Y8dgOprcPWdUgHUPSdue0lkFAUVvW10Q/view?usp=sharing)| 
 
 
 ## AM-2k
@@ -43,6 +42,60 @@ We test GFM on our AM-2k test dataset and show the results as below. More result
 <img src="demo/src/sample1.jpg" width="50%"><img src="demo/src/sample1.png" width="50%">
 
 <img src="demo/src/sample2.jpg" width="50%"><img src="demo/src/sample2.png" width="50%">
+
+## Installation
+Requirements:
+
+- Python 3.6.5+ with Numpy and scikit-image
+- Pytorch (version 1.4.0)
+- Torchvision (version 0.5.0)
+
+1. Clone this repository
+
+    `git clone https://github.com/JizhiziLi/animal-matting.git`
+
+2. Go into the repository
+
+    `cd animal-matting`
+
+3. Create conda environment and activate
+
+    `conda create -n animalmatting python=3.6.5`
+
+    `conda activate animalmatting`
+
+4. Install dependencies, install pytorch and torchvision separately if you need
+
+    `pip install -r requirements.txt`
+
+    `conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch`
+
+Our code has been tested with Python 3.6.5, Pytorch 1.4.0, Torchvision 0.5.0, CUDA 10.1 on Ubuntu 18.04.
+
+
+## Inference Code - How to Test on Your Images
+
+Here we provide the procedure of testing on sample images by our pretrained models:
+
+1. Download pretrained models as shown in section **GFM**, unzip to folder `models/`
+
+2. Save your sample images in folder `samples/original/.`
+
+3. Setup parameters in `scripts/deploy_samples.sh` and run it
+
+    `chmod +x scripts/*`
+
+    `./scripts/deploy_samples.sh`
+
+4. The results of alpha matte and transparent color image will be saved in folder `samples/result_alpha/.` and `samples/result_color/.`
+
+
+We show some sample images from the internet, the predicted alpha mattes, and their transparent results as below. *(We adopt arch='[e2e_resnet34_2b_gfm_tt](https://drive.google.com/file/d/1Y8dgOprcPWdUgHUPSdue0lkFAUVvW10Q/view?usp=sharing)' and use hybrid testing strategy.)*
+
+<img src="samples/original/1.jpg" width="33%"><img src="samples/result_alpha/1.png" width="33%"><img src="samples/result_color/1.png" width="33%">
+<img src="samples/original/2.jpg" width="33%"><img src="samples/result_alpha/2.png" width="33%"><img src="samples/result_color/2.png" width="33%">
+<img src="samples/original/3.jpg" width="33%"><img src="samples/result_alpha/3.png" width="33%"><img src="samples/result_color/3.png" width="33%">
+
 
 
 ## Statement
