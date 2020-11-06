@@ -15,7 +15,8 @@
 
 ***
 ><h4><strong><i><span style="color:red">🚀 Updates:</span></i></strong></h4>
-> 06/11/20: Release the dataset <a href="#bg-20k">BG-20k</a>. Please fill out this [agreement](https://drive.google.com/uc?export=download&id=1-ApImDXsPBa5t-SuE2gYIiNvNL1UGMH7) and send it to [jili8515@uni.sydney.edu.au](mailto:jili8515@uni.sydney.edu.au) from your academic email address to request. 
+>
+> 06/11/20: Release the dataset <a href="#bg-20k">BG-20k</a>. Please fill out this <a href="https://drive.google.com/uc?export=download&id=1-ApImDXsPBa5t-SuE2gYIiNvNL1UGMH7">agreement</a> and send it to <a href="mailto: jili8515@uni.sydney.edu.au">jili8515@uni.sydney.edu.au</a> from your academic email address to request. 
 > 
 > 03/11/20: Publish the <a href="#inference-code-how-to-test-on-your-images">inference code</a> and a [pretrained model](https://drive.google.com/uc?export=download&id=1Y8dgOprcPWdUgHUPSdue0lkFAUVvW10Q) that can be used to test on your own animal images.
 > 
