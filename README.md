@@ -9,7 +9,7 @@
   <a href="#bg-20k">BG-20k</a> |
   <a href="#results-demo">Results Demo</a> |
   <a href="#installation">Installation</a> |
-  <a href="#inference-code-how-to-test-on-your-images">Inference Code</a> |
+  <a href="#inference-code---how-to-test-on-your-images">Inference Code</a> |
   <a href="#statement">Statement</a>
 </p>
 
