@@ -13,8 +13,12 @@
   <a href="#statement">Statement</a>
 </p>
 
+
+<img src="demo/src/spring.gif" width="25%"><img src="demo/src/summer.gif" width="25%"><img src="demo/src/autumn.gif" width="25%"><img src="demo/src/winter.gif" width="25%">
+
 ***
-><h4><strong><i><span style="color:red">🚀 Updates:</span></i></strong></h4>
+>
+><h3><strong><i>🚀 News</i></strong></h3>
 >
 > 06/11/20: Release the dataset <a href="#bg-20k">BG-20k</a>. Please fill out this <a href="https://drive.google.com/uc?export=download&id=1-ApImDXsPBa5t-SuE2gYIiNvNL1UGMH7">agreement</a> and send it to <a href="mailto: jili8515@uni.sydney.edu.au">jili8515@uni.sydney.edu.au</a> from your academic email address to request. 
 > 
