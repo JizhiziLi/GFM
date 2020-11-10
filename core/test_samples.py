@@ -34,7 +34,9 @@ def get_args():
 def inference_function(args, model, scale_img, scale_trimap=None):
 
 	pred_list = []
-	tensor_img = torch.from_numpy(scale_img.astype(np.float32)[np.newaxis, :, :, :]).permute(0, 3, 1, 2).cuda()
+	tensor_img = torch.from_numpy(scale_img.astype(np.float32)[np.newaxis, :, :, :]).permute(0, 3, 1, 2)
+	if args.cuda:
+		tensor_img = tensor_img.cuda()
 	input_t = tensor_img
 	pred_global, pred_local, pred_fusion = model(input_t)
 
@@ -74,7 +76,7 @@ def inference_img_gfm(args, model, img, option):
 		new_h = min(MAX_SIZE_H, resize_h - (resize_h % 32))
 		new_w = min(MAX_SIZE_W, resize_w - (resize_w % 32))
 		scale_img = resize(img,(new_h,new_w))*255.0
-		pred_glance_2, pred_focus_2, pred_fusion_2 = inference_function(args, model, scale_img)		
+		pred_glance_2, pred_focus_2, pred_fusion_2 = inference_function(args, model, scale_img)
 		pred_focus_2 = resize(pred_focus_2,(h,w))
 		if option == 'tt':
 			pred_fusion = get_masked_local_from_global_test(pred_glance_1, pred_focus_2)
@@ -106,7 +108,7 @@ def test_samples(args, model):
 	print(f'=====> Test on samples and save alpha, color results')
 	model.eval()
 	pred_choice = args.pred_choice
-	
+
 	img_list = listdir_nohidden(SAMPLES_ORIGINAL_PATH)
 	refresh_folder(SAMPLES_RESULT_ALPHA_PATH)
 	if pred_choice==3:
@@ -130,7 +132,8 @@ def test_samples(args, model):
 			  img = cv2.resize(img, (new_w, new_h), interpolation=cv2.INTER_LINEAR)
 
 		with torch.no_grad():
-			torch.cuda.empty_cache()
+			if args.cuda:
+				torch.cuda.empty_cache()
 			if args.arch.rfind('tt')>0:
 				predict = inference_img_gfm(args, model, img, 'tt')[pred_choice-1]
 			elif args.arch.rfind('ft')>0:
