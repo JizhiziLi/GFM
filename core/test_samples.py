@@ -167,7 +167,7 @@ def load_model_and_deploy(args):
 
 	if args.arch == 'e2e_resnet34_2b_gfm_tt':
 		model = e2e_resnet34_2b_gfm_tt(args)
-	ckpt = torch.load(args.model_path)
+	ckpt = torch.load(args.model_path,map_location=torch.device('cpu'))
 	model.load_state_dict(ckpt, strict=True)
 	if args.cuda:
 		model = model.cuda()
