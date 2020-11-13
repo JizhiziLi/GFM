@@ -126,6 +126,8 @@ We show some sample images from the internet, the predicted alpha mattes, and th
 <img src="samples/original/1.jpg" width="33%"><img src="samples/result_alpha/1.png" width="33%"><img src="samples/result_color/1.png" width="33%">
 <img src="samples/original/2.jpg" width="33%"><img src="samples/result_alpha/2.png" width="33%"><img src="samples/result_color/2.png" width="33%">
 <img src="samples/original/3.jpg" width="33%"><img src="samples/result_alpha/3.png" width="33%"><img src="samples/result_color/3.png" width="33%">
+<img src="samples/original/4.jpg" width="33%"><img src="samples/result_alpha/4.png" width="33%"><img src="samples/result_color/4.png" width="33%">
+<img src="samples/original/5.jpg" width="33%"><img src="samples/result_alpha/5.png" width="33%"><img src="samples/result_color/5.png" width="33%">
 
 ## Statement
 This project is for research purpose only, please contact us for the licence of commercial use. For any other questions please contact [jili8515@uni.sydney.edu.au](mailto:jili8515@uni.sydney.edu.au).

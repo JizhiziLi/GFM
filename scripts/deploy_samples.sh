@@ -12,7 +12,7 @@ test_dataset='SAMPLES'
 pred_choice=3
 
 python core/test_samples.py \
-     --cuda \
+	 --cuda \
      --arch=$arch \
      --model_path=models/model_r34_2b_gfm_tt.pth \
      --pred_choice=$pred_choice \
