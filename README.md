@@ -42,7 +42,7 @@
 
 [Here](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing) is a video demo to illustrate the motivation, the network, the datasets, and the test results on an animal video.
 
-<p align="justify">We have released the inference code, a pretrained model and the <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing">Google Colab</a> demo, which can be found in section <a href="#inference-code-how-to-test-on-your-images"><i>inference code</i></a> for more details. We have also published dataset **BG-20k**, please follow the guidance in section <a href="#bg-20k"><i>Bg-20k</i></a> to access. Since the paper is currently under review, the dataset **AM-2k**, training code and the rest pretrained models will be made public after review.</p>
+<p align="justify">We have released the inference code, a pretrained model and the <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing">Google Colab</a> demo, which can be found in section <a href="#inference-code-how-to-test-on-your-images"><i>inference code</i></a> for more details. We have also published dataset <strong>BG-20k</strong>, please follow the guidance in section <a href="#bg-20k"><i>Bg-20k</i></a> to access. Since the paper is currently under review, the dataset <strong>AM-2k</strong>, training code and the rest pretrained models will be made public after review.</p>
 
 ## GFM
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
