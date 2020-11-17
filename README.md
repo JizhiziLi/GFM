@@ -1,5 +1,10 @@
 <h1 align="center">End-to-end Animal Image Matting</h1>
 
+<p align="center">
+<a href="https://arxiv.org/pdf/2010.16188.pdf"><img  src="https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg" ></a>
+<a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing"><img  src="https://colab.research.google.com/assets/colab-badge.svg"></a>
+</p>
+
 <h4 align="center">This is the official repository of the paper <a href="https://arxiv.org/pdf/2010.16188.pdf">End-to-end Animal Image Matting</a>.</h4>
 
 <p align="center">
@@ -22,6 +27,8 @@
 >
 > The training code and the dataset <a href="#am-2k">AM-2k</a> will be released after paper review. 
 > 
+> [2020-11-17]: Create <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing">Google Colab</a> demo to benefit users who want to have a try online.
+> 
 > [2020-11-06]: Release the dataset <a href="#bg-20k">BG-20k</a>. Please fill out this <a href="https://drive.google.com/uc?export=download&id=1-ApImDXsPBa5t-SuE2gYIiNvNL1UGMH7">agreement</a> and send it to <a href="mailto: jili8515@uni.sydney.edu.au">jili8515@uni.sydney.edu.au</a> from your academic email address to request. 
 > 
 > [2020-11-03]: Publish the <a href="#inference-code-how-to-test-on-your-images">inference code</a> and a [pretrained model](https://drive.google.com/uc?export=download&id=1Y8dgOprcPWdUgHUPSdue0lkFAUVvW10Q) that can be used to test on your own animal images.
@@ -35,7 +42,7 @@
 
 [Here](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing) is a video demo to illustrate the motivation, the network, the datasets, and the test results on an animal video.
 
-We have released the inference code and a pretrained model, which can be found in section <a href="#inference-code-how-to-test-on-your-images"><i>inference code</i></a>. We have also published dataset **BG-20k**, please follow the guidance in section <a href="#bg-20k"><i>Bg-20k</i></a> to access. Since the paper is currently under review, the dataset **AM-2k**, training code and the rest pretrained models will be made public after review. 
+<p align="justify">We have released the inference code, a pretrained model and the <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing">Google Colab</a> demo, which can be found in section <a href="#inference-code-how-to-test-on-your-images"><i>inference code</i></a> for more details. We have also published dataset **BG-20k**, please follow the guidance in section <a href="#bg-20k"><i>Bg-20k</i></a> to access. Since the paper is currently under review, the dataset **AM-2k**, training code and the rest pretrained models will be made public after review.</p>
 
 ## GFM
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
@@ -128,6 +135,9 @@ We show some sample images from the internet, the predicted alpha mattes, and th
 <img src="samples/original/3.jpg" width="33%"><img src="samples/result_alpha/3.png" width="33%"><img src="samples/result_color/3.png" width="33%">
 <img src="samples/original/4.jpg" width="33%"><img src="samples/result_alpha/4.png" width="33%"><img src="samples/result_color/4.png" width="33%">
 <img src="samples/original/5.jpg" width="33%"><img src="samples/result_alpha/5.png" width="33%"><img src="samples/result_color/5.png" width="33%">
+
+In case you do not have GPUs in your environment or just want to have a simple try online, you can try our
+<a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing">Google Colab</a> demo to generate the results for you images easily.
 
 ## Statement
 This project is for research purpose only, please contact us for the licence of commercial use. For any other questions please contact [jili8515@uni.sydney.edu.au](mailto:jili8515@uni.sydney.edu.au).
