@@ -28,13 +28,13 @@
 >
 > The training code and the rest pretrained models will be released after paper review. 
 > 
-> [2021-09-21]: The datasets <a href="https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing"><strong>AM-2k</strong></a> and <a href="https://drive.google.com/drive/folders/1ZBaMJxZtUNHIuGj8D8v3B9Adn8dbHwSS?usp=sharing"><strong>BG-20k</strong></a> can now be <strong>openly accessed</strong> from the links below! Please follow the dataset release agreements to access. You an also refer to sections <a href="#am-2k">AM-2k</a> and <a href="#bg-20k">BG-20k</a> for more details.
-
+> [2021-09-21]: The datasets <a href="https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing"><strong>AM-2k</strong></a> and <a href="https://drive.google.com/drive/folders/1ZBaMJxZtUNHIuGj8D8v3B9Adn8dbHwSS?usp=sharing"><strong>BG-20k</strong></a> can now be <strong>openly accessed</strong> from the links below! Please follow the dataset release agreements to access. You can also refer to sections <a href="#am-2k">AM-2k</a> and <a href="#bg-20k">BG-20k</a> for more details.
+>
 > | Dataset | Dataset Link (Google Drive) | Dataset Release Agreement|
 > | :----:| :----: | :----: | 
 > |<strong>AM-2k</strong>|[link](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing)|[agreement](https://drive.google.com/uc?export=download&id=10YnNxIEtgVgrGqEtD96xCT8OaR8hzxyh)| 
 > |<strong>BG-20k</strong>|[link](https://drive.google.com/drive/folders/1ZBaMJxZtUNHIuGj8D8v3B9Adn8dbHwSS?usp=sharing)|[agreement](https://drive.google.com/uc?export=download&id=18aA452x3KN0arcj16NAFPU5Idjn12HQk)| 
-
+>
 > 
 > [2020-11-17]: Create <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing"><strong>Google Colab</strong></a> demo to benefit users who want to have a try online.
 >
