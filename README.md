@@ -26,11 +26,19 @@
 >
 ><h3><strong><i>🚀 News</i></strong></h3>
 >
-> The training code and the dataset <a href="#am-2k">AM-2k</a> will be released after paper review. 
+> The training code and the rest pretrained models will be released after paper review. 
+> 
+> [2021-09-21]: The datasets <a href="https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing"><strong>AM-2k</strong></a> and <a href="https://drive.google.com/drive/folders/1ZBaMJxZtUNHIuGj8D8v3B9Adn8dbHwSS?usp=sharing"><strong>BG-20k</strong></a> can now be <strong>openly accessed</strong> from the links below! Please follow the dataset release agreements to access. You an also refer to sections <a href="#am-2k">AM-2k</a> and <a href="#bg-20k">BG-20k</a> for more details.
+
+> | Dataset | Dataset Link (Google Drive) | Dataset Release Agreement|
+> | :----:| :----: | :----: | 
+> |<strong>AM-2k</strong>|[link](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing)|[agreement](https://drive.google.com/uc?export=download&id=10YnNxIEtgVgrGqEtD96xCT8OaR8hzxyh)| 
+> |<strong>BG-20k</strong>|[link](https://drive.google.com/drive/folders/1ZBaMJxZtUNHIuGj8D8v3B9Adn8dbHwSS?usp=sharing)|[agreement](https://drive.google.com/uc?export=download&id=18aA452x3KN0arcj16NAFPU5Idjn12HQk)| 
+
 > 
 > [2020-11-17]: Create <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing"><strong>Google Colab</strong></a> demo to benefit users who want to have a try online.
-> 
-> [2020-11-06]: Release the dataset <a href="#bg-20k">BG-20k</a>. Please fill out this <a href="https://drive.google.com/uc?export=download&id=1-ApImDXsPBa5t-SuE2gYIiNvNL1UGMH7">agreement</a> and send it to <a href="mailto: jili8515@uni.sydney.edu.au">jili8515@uni.sydney.edu.au</a> from your academic email address to request. 
+>
+<!-- > [2020-11-06]: Release the dataset <a href="#bg-20k">BG-20k</a>. Please fill out this <a href="https://drive.google.com/uc?export=download&id=1gll7x1rl31pmK8nxnb5JhLgKIpvEqJtx">agreement</a> and send it to <a href="mailto: jili8515@uni.sydney.edu.au">jili8515@uni.sydney.edu.au</a> from your academic email address to request.  -->
 > 
 > [2020-11-03]: Publish the <a href="#inference-code-how-to-test-on-your-images">inference code</a> and a [pretrained model](https://drive.google.com/uc?export=download&id=1Y8dgOprcPWdUgHUPSdue0lkFAUVvW10Q) that can be used to test on your own animal images.
 > 
@@ -51,7 +59,7 @@
 
 [Here](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing) is a video demo to illustrate the motivation, the network, the datasets, and the test results on an animal video.
 
-<p align="justify">We have released the inference code, a pretrained model and the <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing">Google Colab</a> demo, which can be found in section <a href="#inference-code-how-to-test-on-your-images"><i>inference code</i></a> for more details. We have also published dataset <strong>BG-20k</strong>, please follow the guidance in section <a href="#bg-20k"><i>Bg-20k</i></a> to access. Since the paper is currently under review, the dataset <strong>AM-2k</strong>, training code and the rest pretrained models will be made public after review.</p>
+<p align="justify">We have released the inference code, a pretrained model and the <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing">Google Colab</a> demo, which can be found in section <a href="#inference-code-how-to-test-on-your-images"><i>inference code</i></a> for more details. We have also published dataset  <strong>AM-2k</strong> and <strong>BG-20k</strong>, please follow the guidance in section <a href="#am-2k"><i>AM-2k</i></a> and <a href="#bg-20k"><i>BG-20k</i></a> to access. Since the paper is currently under review, the training code and the rest pretrained models will be made public after review.</p>
 
 ## GFM
 The architecture of our proposed end-to-end method <strong>GFM</strong> is illustrated below. We adopt three kinds of <em>Representation of Semantic and Transition Area</em> (<strong>RoSTa</strong>) `-TT, -FT, -BT` within our method. 
@@ -68,15 +76,14 @@ We trained GFM with three backbones, `-(d)` (DenseNet-121), `-(r)` (ResNet-34), 
 ## AM-2k
 Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the [video demo](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
 
+<strong>AM-2k</strong> can be accessed from [here](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA), please make sure that you have read [this agreement](https://drive.google.com/uc?export=download&id=10YnNxIEtgVgrGqEtD96xCT8OaR8hzxyh) before accessing the dataset. For more details about the dataset, please refer to the `readme.txt` in the dataset folder.
+
 ![](demo/src/am2k.png)
 
 ## BG-20k
 Our proposed <strong>BG-20k</strong> contains 20,000 high-resolution background images excluded salient objects, which can be used to help generate high quality synthetic data. Some examples are shown as below, more can be viewed in the [video demo](https://drive.google.com/file/d/1-NyeclNim9jAehrxGrbK_1PbFTgDZH5S/view?usp=sharing).
 
-
-The <strong>BG-20k</strong> dataset is publish now!! 
-
-You can request it by filling out [this agreement](https://drive.google.com/uc?export=download&id=1-ApImDXsPBa5t-SuE2gYIiNvNL1UGMH7) and sending it to [jili8515@uni.sydney.edu.au](mailto:jili8515@uni.sydney.edu.au) from your academic email address. Please note the dataset can be only used for research purpose.
+<strong>BG-20k</strong> can be accessed from [here](https://drive.google.com/drive/folders/1ZBaMJxZtUNHIuGj8D8v3B9Adn8dbHwSS), please make sure that you have read [this agreement](https://drive.google.com/uc?export=download&id=18aA452x3KN0arcj16NAFPU5Idjn12HQk) before accessing the dataset. For more details about the dataset, please refer to the `readme.txt` in the dataset folder.
 
 ![](demo/src/bg20k.jpg)
 
@@ -149,3 +156,11 @@ We show some sample images from the internet, the predicted alpha mattes, and th
 ## Statement
 This project is for research purpose only, please contact us for the licence of commercial use. For any other questions please contact [jili8515@uni.sydney.edu.au](mailto:jili8515@uni.sydney.edu.au).
 
+
+## Relevant Projects
+
+[1] <strong>Deep Automatic Natural Image Matting, IJCAI, 2021</strong> | [Paper](https://www.ijcai.org/proceedings/2021/0111.pdf) | [Github](https://github.com/JizhiziLi/AIM)
+<br><em>&ensp; &ensp; &ensp;Jizhizi Li, Jing Zhang, and Dacheng Tao</em>
+
+[2] <strong>Privacy-Preserving Portrait Matting, ACM MM, 2021</strong> | [Paper](https://arxiv.org/pdf/2104.14222.pdf) | [Github](https://github.com/JizhiziLi/P3M)
+<br><em>&ensp; &ensp; &ensp;Jizhizi Li<sup>&#8727;</sup>, Sihan Ma<sup>&#8727;</sup>, Jing Zhang, and Dacheng Tao</em>
