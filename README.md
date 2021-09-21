@@ -38,7 +38,6 @@
 > 
 > [2020-11-17]: Create <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing"><strong>Google Colab</strong></a> demo to benefit users who want to have a try online.
 >
-<!-- > [2020-11-06]: Release the dataset <a href="#bg-20k">BG-20k</a>. Please fill out this <a href="https://drive.google.com/uc?export=download&id=1gll7x1rl31pmK8nxnb5JhLgKIpvEqJtx">agreement</a> and send it to <a href="mailto: jili8515@uni.sydney.edu.au">jili8515@uni.sydney.edu.au</a> from your academic email address to request.  -->
 > 
 > [2020-11-03]: Publish the <a href="#inference-code-how-to-test-on-your-images">inference code</a> and a [pretrained model](https://drive.google.com/uc?export=download&id=1Y8dgOprcPWdUgHUPSdue0lkFAUVvW10Q) that can be used to test on your own animal images.
 > 
