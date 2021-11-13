@@ -5,7 +5,7 @@ Main test file.
 Copyright (c) 2021, Jizhizi Li (jili8515@uni.sydney.edu.au)
 Licensed under the MIT License (see LICENSE for details)
 Github repo: https://github.com/JizhiziLi/GFM
-Paper repo (Arxiv): https://arxiv.org/abs/2010.16188
+Paper link (Arxiv): https://arxiv.org/abs/2010.16188
 
 """
 

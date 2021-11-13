@@ -5,7 +5,7 @@ Base Configurations class.
 Copyright (c) 2021, Jizhizi Li (jili8515@uni.sydney.edu.au)
 Licensed under the MIT License (see LICENSE for details)
 Github repo: https://github.com/JizhiziLi/GFM
-Paper repo (Arxiv): https://arxiv.org/abs/2010.16188
+Paper link (Arxiv): https://arxiv.org/abs/2010.16188
 
 """
 
@@ -14,11 +14,6 @@ REPOSITORY_ROOT_PATH = ''
 AM2K_DATASET_ROOT_PATH = ''
 BG20K_DATASET_ROOT_PATH = ''
 COCO_DATASET_ROOT_PATH = ''
-
-AM2K_DATASET_ROOT_PATH = '/project/imagematting/dataset/mammals_matting_dataset/mmd_mixed/'
-BG20K_DATASET_ROOT_PATH = '/project/imagematting/dataset/hqbgDataset/'
-COCO_DATASET_ROOT_PATH = '/project/matting/dataset/coco/'
-
 
 TRAIN_LOGS_FOLDER = REPOSITORY_ROOT_PATH+'logs/train_logs/'
 TEST_LOGS_FOLDER = REPOSITORY_ROOT_PATH+'logs/test_logs/'
