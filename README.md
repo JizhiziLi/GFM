@@ -45,7 +45,7 @@
 >
 > | Dataset | <p>Dataset Link<br>(Google Drive)</p> | <p>Dataset Link<br>(Baidu Wangpan 百度网盘)</p> | Dataset Release Agreement|
 > | :----:| :----: | :----: | :----: | 
-> |<strong>AM-2k</strong>|[Link](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing)|[Link](https://pan.baidu.com/s/1JQNWA30Q5MVp45CgbAfDRg) (pw: i2u6)|[Agreement (MIT License)](https://jizhizili.github.io/files/gfm_datasets_agreements/AM-2k_Dataset_Release_Agreement.pdf)| 
+> |<strong>AM-2k</strong>|[Link](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing)|[Link](https://pan.baidu.com/s/1M1uF227-ZrYe3MBafqyTdw) (pw: 29r1)|[Agreement (MIT License)](https://jizhizili.github.io/files/gfm_datasets_agreements/AM-2k_Dataset_Release_Agreement.pdf)| 
 > |<strong>BG-20k</strong>|[Link](https://drive.google.com/drive/folders/1ZBaMJxZtUNHIuGj8D8v3B9Adn8dbHwSS?usp=sharing)|[Link](https://pan.baidu.com/s/1DR4uAO5j9rs-sfhn8J7oUQ) (pw: dffp)|[Agreement (MIT License)](https://jizhizili.github.io/files/gfm_datasets_agreements/BG-20k_Dataset_Release_Agreement.pdf)| 
 > 
 > [2020-11-17]: Create <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing"><strong>Google Colab</strong></a> demo to benefit users who want to have a try online.
@@ -84,7 +84,7 @@ We trained [GFM](core/gfm.py) with four backbones,  `-(r)` (ResNet-34), `-(d)` (
 ## AM-2k
 Our proposed <strong>AM-2k</strong> contains 2,000 high-resolution natural animal images from 20 categories along with manually labeled alpha mattes. Some examples are shown as below, more can be viewed in the video demo ([YouTube](https://www.youtube.com/watch?v=FJPm4YQOEyo) | [bilibili](https://www.bilibili.com/video/BV1X34y1o7nK) | [Google drive](https://drive.google.com/file/d/1S5sirgvscz0BwVmlO8GiZudP30DEACbE/view?usp=sharing)).
 
-<strong>AM-2k</strong> can be accessed from here ([Google Drive](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing) | [Baidu Wangpan (pw: i2u6)](https://pan.baidu.com/s/1JQNWA30Q5MVp45CgbAfDRg)), please make sure that you have read [this agreement](https://jizhizili.github.io/files/gfm_datasets_agreements/AM-2k_Dataset_Release_Agreement.pdf) before accessing the dataset. Please refer to the `readme.txt` in the dataset folder for more details.
+<strong>AM-2k</strong> can be accessed from here ([Google Drive](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing) | [Baidu Wangpan (pw: 29r1)](https://pan.baidu.com/s/1M1uF227-ZrYe3MBafqyTdw)), please make sure that you have read [this agreement](https://jizhizili.github.io/files/gfm_datasets_agreements/AM-2k_Dataset_Release_Agreement.pdf) before accessing the dataset. Please refer to the `readme.txt` in the dataset folder for more details.
 
 ![](demo/src/homepage/am2k.png)
 

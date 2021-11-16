@@ -42,12 +42,12 @@ Our code has been tested with Python 3.7.7, Pytorch 1.7.1, Torchvision 0.8.2, CU
 
 | Dataset | <p>Dataset Link<br>(Google Drive)</p> | <p>Dataset Link<br>(Baidu Wangpan 百度网盘)</p> | Dataset Release Agreement|
 | :----:| :----: | :----: | :----: | 
-|<strong>AM-2k</strong>|[Link](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing)|[Link](https://pan.baidu.com/s/1JQNWA30Q5MVp45CgbAfDRg) (pw: i2u6)|[Agreement (MIT License)](https://jizhizili.github.io/files/gfm_datasets_agreements/AM-2k_Dataset_Release_Agreement.pdf)| 
+|<strong>AM-2k</strong>|[Link](https://drive.google.com/drive/folders/1SReB9Zma0TDfDhow7P5kiZNMwY9j9xMA?usp=sharing)|[Link](https://pan.baidu.com/s/1M1uF227-ZrYe3MBafqyTdw) (pw: 29r1)|[Agreement (MIT License)](https://jizhizili.github.io/files/gfm_datasets_agreements/AM-2k_Dataset_Release_Agreement.pdf)| 
 |<strong>BG-20k</strong>|[Link](https://drive.google.com/drive/folders/1ZBaMJxZtUNHIuGj8D8v3B9Adn8dbHwSS?usp=sharing)|[Link](https://pan.baidu.com/s/1DR4uAO5j9rs-sfhn8J7oUQ) (pw: dffp)|[Agreement (MIT License)](https://jizhizili.github.io/files/gfm_datasets_agreements/BG-20k_Dataset_Release_Agreement.pdf)|
 
 1. Download the datasets AM-2k and BG-20k from the above links and unzip to the folders `AM2K_DATASET_ROOT_PATH` and `BG20K_DATASET_ROOT_PATH`, set up the configuratures in the file `core/config.py`. Please make sure that you have checked out and agreed to the agreements.
 
-2. For the purpose of training on ORI-Track and COMP-Track, you will need to generate the foreground and background of AM-2k trainign set following the paper `Levin, Anat, Dani Lischinski, and Yair Weiss. "A closed-form solution to natural image matting." IEEE transactions on pattern analysis and machine intelligence, 2007`. You can refer to this [github repo](https://github.com/MarcoForte/closed-form-matting/blob/master/closed_form_matting/solve_foreground_background.py) for python implementation or refer to [here](http://people.csail.mit.edu/alevin/matting.tar.gz) for matlab implementation. Fit the results of the foregrounds and the backgrounds into the folder `AM2K_DATASET_ROOT_PATH+fg/` and `AM2K_DATASET_ROOT_PATH+bg/`.
+2. For the purpose of training on ORI-Track and COMP-Track, we use the foregrounds and backgrounds generated following closed form method as in the paper `Levin, Anat, Dani Lischinski, and Yair Weiss. "A closed-form solution to natural image matting." IEEE transactions on pattern analysis and machine intelligence, 2007`. Some reference implementations can be referred to [here (python)](https://github.com/MarcoForte/closed-form-matting/blob/master/closed_form_matting/solve_foreground_background.py) and [here (matlab)](http://people.csail.mit.edu/alevin/matting.tar.gz). 
 
 3. In order to use the composition route RSSN in COMP-Track, high-resolution backgrounds, you will need to denoise the training images in AM-2k and BG-20k. We follow the paper `Danielyan A, Katkovnik V, Egiazarian K. BM3D frames and variational image deblurring[J]. IEEE Transactions on image processing, 2011` for generating denoise images. You can refer to the [bm3d](https://pypi.org/project/bm3d/) for the installation and implementation. After denoising, make sure that you have saved the results in the folder `AM2K_DATASET_ROOT_PATH+fg_denoise/`, and `BG20K_DATASET_ROOT_PATH+train_denoise/`.
 
@@ -120,13 +120,13 @@ Here we provide the procedure of training on ORI-Track of AM-2k:
 
     `./scripts/train/train_ori.sh`;
 
-    (2) To train <strong>easier</strong> without any extra datasets needed, run the code:
+    (2) To train <strong>easier</strong> without any extra datasets needed (no extra foregrounds and backgrounds), run the code:
     
     `chmod +x scripts/train/*`,
 
     `./scripts/train/train_ori_easier.sh`;
 
-4. The training logging file will be saved in the folder `logs/train_logs/args.logname`;
+4. The training logging file will be saved in the file `logs/train_logs/args.logname`;
 
 5. The trained model will be saved in the folder `args.model_save_dir`.
 
@@ -157,7 +157,7 @@ Here we provide the procedure of training on COMP-Track of AM-2k:
     
     `./scripts/train/train_coco.sh`;
 
-4. The training logging file will be saved in the folder `logs/train_logs/args.logname`;
+4. The training logging file will be saved in the file `logs/train_logs/args.logname`;
 
 5. The trained model will be saved in the folder `args.model_save_dir`.
 

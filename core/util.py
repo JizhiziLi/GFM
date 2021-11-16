@@ -14,6 +14,7 @@ import shutil
 import torch
 import numpy as np
 import cv2
+from PIL import Image
 from config import *
 
 ##########################
@@ -31,11 +32,11 @@ def listdir_nohidden(path):
 	new_list.sort()
 	return new_list
 
-def create_folder_if_not_exist(folder_path):
+def create_folder_if_not_exists(folder_path):
 	if not os.path.exists(folder_path):
 		os.makedirs(folder_path)
 
-def check_if_folder_exist(folder_path):
+def check_if_folder_exists(folder_path):
 	return os.path.exists(folder_path)
 	
 
@@ -168,3 +169,83 @@ def generate_paths_for_dataset(args):
 		paths_list.append(path_list)
 
 	return paths_list
+
+def trim_img(img):
+	if img.ndim>2:
+		img = img[:,:,0]
+	return img
+
+def resize_img(ori, img):
+	img = resize(img, ori.shape)*255.0
+	return img
+
+def process_fgbg(ori, mask, is_fg, fgbg_path=None):
+	if fgbg_path is not None:
+		img = np.array(Image.open(fgbg_path))
+	else:
+		mask_3 = (mask/255.0)[:, :, np.newaxis].astype(np.float32)
+		img = ori*mask_3 if is_fg else ori*(1-mask_3)
+	return img
+
+def add_guassian_noise(img, fg, bg):
+	row,col,ch= img.shape
+	mean = 0
+	sigma = 10
+	gauss = np.random.normal(mean,sigma,(row,col,ch))
+	gauss = gauss.reshape(row,col,ch)
+	noisy_img = np.uint8(img + gauss)
+	noisy_fg = np.uint8(fg + gauss)
+	noisy_bg = np.uint8(bg + gauss)
+	return noisy_img, noisy_fg, noisy_bg
+
+def generate_composite_rssn(fg, bg, mask, fg_denoise=None, bg_denoise=None):
+	## resize bg accordingly
+	h, w, c = fg.shape
+	alpha = np.zeros((h, w, 1), np.float32)
+	alpha[:, :, 0] = mask / 255.
+	bg = resize_img(fg, bg)
+	## use denoise fg/bg randomly
+	if fg_denoise is not None and random.random()<0.5:
+		fg = fg_denoise
+		bg = resize_img(fg, bg_denoise)
+	## reduce sharpness discrepancy
+	if random.random()<0.5:
+		rand_kernel = random.choice([20,30,40,50,60])
+		bg = cv2.blur(bg, (rand_kernel,rand_kernel))
+	composite = alpha * fg + (1 - alpha) * bg
+	composite = composite.astype(np.uint8)
+	## reduce noise discrepancy
+	if random.random()<0.5:
+		composite, fg, bg = add_guassian_noise(composite, fg, bg)
+	return composite, fg, bg
+
+def generate_composite_coco(fg, bg, mask):
+	h, w, c = fg.shape
+	alpha = np.zeros((h, w, 1), np.float32)
+	alpha[:, :, 0] = mask / 255.
+	bg = resize_img(fg, bg)
+	composite = alpha * fg + (1 - alpha) * bg
+	composite = composite.astype(np.uint8)
+	return composite, fg, bg
+
+
+def gen_trimap_with_dilate(alpha, kernel_size):	
+	kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel_size,kernel_size))
+	fg_and_unknown = np.array(np.not_equal(alpha, 0).astype(np.float32))
+	fg = np.array(np.equal(alpha, 255).astype(np.float32))
+	dilate =  cv2.dilate(fg_and_unknown, kernel, iterations=1)
+	erode = cv2.erode(fg, kernel, iterations=1)
+	trimap = erode *255 + (dilate-erode)*128
+	return trimap.astype(np.uint8)
+
+def gen_dilate(alpha, kernel_size): 
+	kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel_size,kernel_size))
+	fg_and_unknown = np.array(np.not_equal(alpha, 0).astype(np.float32))
+	dilate =  cv2.dilate(fg_and_unknown, kernel, iterations=1)*255
+	return dilate.astype(np.uint8)
+
+def gen_erosion(alpha, kernel_size): 
+	kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel_size,kernel_size))
+	fg = np.array(np.equal(alpha, 255).astype(np.float32))
+	erode = cv2.erode(fg, kernel, iterations=1)*255
+	return erode.astype(np.uint8)
