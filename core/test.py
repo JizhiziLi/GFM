@@ -27,17 +27,19 @@ def get_args():
 	
 	parser = argparse.ArgumentParser(description='Arguments for the testing purpose.')	
 	# backbone: the backbone of GFM, we provide four backbones - r34, r34_2b, d121 and r101.
-	# rosta (Representations of Semantic and Transition areas): we provide three types - TT, FT, and BT
+	# rosta (Representations of Semantic and Transition areas): we provide three types - TT, FT, and BT. 
+	# We also present RIM indicates RoSTa Integration Module.
 	# model_path: path of the pretrained model to use
-	# pred_choice: 1 (glance decoder), 2 (focus decoder) and 3 (final result afte Collaborative Matting) 
+	# pred_choice(TT/FT/BT): 1 (glance decoder), 2 (focus decoder) and 3 (final result after Collaborative Matting) 
+	# pred_choice(RIM): 1 (TT result), 2 (FT result), 3 (BT result), and 4 (RIM result). 
 	# test_choice: test strategy (HYBRID or RESIZE)
 	# test_result_dir: path to save the test results
 	# logname: name of the logging files
 	parser.add_argument('--cuda', action='store_true', help='use cuda?')
 	parser.add_argument('--backbone', type=str, required=False, default='r34',choices=["r34","r34_2b","d121","r101"], help="net backbone")
-	parser.add_argument('--rosta', type=str, required=False, default='TT',choices=["TT","FT","BT"], help="rosta")
+	parser.add_argument('--rosta', type=str, required=False, default='TT',choices=["TT","FT","BT","RIM"], help="rosta")
 	parser.add_argument('--model_path', type=str, default='', required=False, help="path of the pretrained model to use")
-	parser.add_argument('--pred_choice', type=int, required=False, default=3, choices=[1, 2, 3], help="pred choice for testing")
+	parser.add_argument('--pred_choice', type=int, required=False, default=3, choices=[1, 2, 3, 4], help="pred choice for testing, three options for TT/FT/BT, four for RIM")
 	parser.add_argument('--dataset_choice', type=str, required=True, choices=['AM_2K','SAMPLES'], help="which dataset to test")
 	parser.add_argument('--test_choice', type=str, required=True, choices=['RESIZE','HYBRID'], help="which test strategy to use")
 	parser.add_argument('--test_result_dir', type=str, required=False, default='', help="where to save the test results")
@@ -53,18 +55,25 @@ def inference_img_scale(args, model, scale_img):
 	if args.cuda:
 		tensor_img = tensor_img.cuda()	
 	input_t = tensor_img
-	pred_global, pred_local, pred_fusion = model(input_t)
-
-	if args.rosta == 'TT':
-		pred_global = pred_global.data.cpu().numpy()
-		pred_global = gen_trimap_from_segmap_e2e(pred_global)
+	if args.rosta=='RIM':
+		pred_tt, pred_ft, pred_bt, pred_fusion = model(input_t)
+		pred_tt = pred_tt[2].data.cpu().numpy()[0,0,:,:]
+		pred_ft = pred_ft[2].data.cpu().numpy()[0,0,:,:]
+		pred_bt = pred_bt[2].data.cpu().numpy()[0,0,:,:]
+		pred_fusion = pred_fusion.data.cpu().numpy()[0,0,:,:]
+		return pred_tt, pred_ft, pred_bt, pred_fusion
 	else:
-		pred_global = pred_global.data.cpu().numpy()
-		pred_global = gen_bw_from_segmap_e2e(pred_global)
-	pred_local = pred_local.data.cpu().numpy()[0,0,:,:]
-	pred_fusion = pred_fusion.data.cpu().numpy()[0,0,:,:]
+		pred_global, pred_local, pred_fusion = model(input_t)
+		if args.rosta == 'TT':
+			pred_global = pred_global.data.cpu().numpy()
+			pred_global = gen_trimap_from_segmap_e2e(pred_global)
+		else:
+			pred_global = pred_global.data.cpu().numpy()
+			pred_global = gen_bw_from_segmap_e2e(pred_global)
+		pred_local = pred_local.data.cpu().numpy()[0,0,:,:]
+		pred_fusion = pred_fusion.data.cpu().numpy()[0,0,:,:]
 
-	return pred_global, pred_local, pred_fusion
+		return pred_global, pred_local, pred_fusion
 
 
 def inference_img_gfm(args, model, img, option):
@@ -73,7 +82,30 @@ def inference_img_gfm(args, model, img, option):
 	new_h = min(MAX_SIZE_H, h - (h % 32))
 	new_w = min(MAX_SIZE_W, w - (w % 32))
 
-	if args.test_choice=='HYBRID':
+	if args.rosta=='RIM':
+		resize_h = int(h/3)
+		resize_w = int(w/3)
+		new_h = min(MAX_SIZE_H, resize_h - (resize_h % 32))
+		new_w = min(MAX_SIZE_W, resize_w - (resize_w % 32))
+		scale_img = resize(img,(new_h,new_w))*255.0
+		pred_tt, pred_ft, pred_bt, pred_fusion = inference_img_scale(args, model, scale_img)
+		pred_tt = resize(pred_tt,(h,w))
+		pred_ft = resize(pred_ft,(h,w))
+		pred_bt = resize(pred_bt,(h,w))
+		pred_fusion = resize(pred_fusion,(h,w))
+		return [pred_tt, pred_ft, pred_bt, pred_fusion]
+	elif args.test_choice=='RESIZE':
+		resize_h = int(h/2)
+		resize_w = int(w/2)
+		new_h = min(MAX_SIZE_H, resize_h - (resize_h % 32))
+		new_w = min(MAX_SIZE_W, resize_w - (resize_w % 32))
+		scale_img = resize(img,(new_h,new_w))*255.0
+		pred_glance, pred_focus, pred_fusion = inference_img_scale(args, model, scale_img)
+		pred_focus = resize(pred_focus,(h,w))
+		pred_glance = resize(pred_glance,(h,w))*255.0
+		pred_fusion = resize(pred_fusion,(h,w))
+		return [pred_glance, pred_focus, pred_fusion]
+	else:
 		## Combine 1/3 glance and 1/2 focus
 		global_ratio = 1/3
 		local_ratio = 1/2
@@ -101,19 +133,7 @@ def inference_img_gfm(args, model, img, option):
 			pred_fusion[pred_fusion>1]=1
 		return [pred_glance_1, pred_focus_2, pred_fusion]
 
-	else:
-		if args.test_choice=='RESIZE':
-			resize_h = int(h/2)
-			resize_w = int(w/2)
-			new_h = min(MAX_SIZE_H, resize_h - (resize_h % 32))
-			new_w = min(MAX_SIZE_W, resize_w - (resize_w % 32))
-		scale_img = resize(img,(new_h,new_w))*255.0
-		pred_glance, pred_focus, pred_fusion = inference_img_scale(args, model, scale_img)
-		pred_focus = resize(pred_focus,(h,w))
-		pred_glance = resize(pred_glance,(h,w))*255.0
-		pred_fusion = resize(pred_fusion,(h,w))
-
-		return [pred_glance, pred_focus, pred_fusion]
+		
 
 def test_am2k(args, model):
 	############################
@@ -190,7 +210,7 @@ def test_am2k(args, model):
 	args.logging.info("===============================")
 	args.logging.info(f"Testing numbers: {total_number}")
 
-	if pred_choice==3:
+	if pred_choice in [3,4]:
 		args.logging.info("SAD: {}".format(sad_diffs / total_number))
 		args.logging.info("MSE: {}".format(mse_diffs / total_number))
 		args.logging.info("MAD: {}".format(mad_diffs / total_number))

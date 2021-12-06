@@ -101,14 +101,16 @@ class MattingDataset(torch.utils.data.Dataset):
 		elif self.BG_CHOICE == 'coco':
 			ori, fg, bg = generate_composite_coco(fg, bg, mask)
 		# Generate trimap/dilation/erosion online
-		kernel_size = random.randint(25,35)
-		trimap = gen_trimap_with_dilate(mask, kernel_size)
-		dilation = gen_dilate(mask, kernel_size)
-		erosion = gen_erosion(mask, kernel_size)
+		kernel_size_tt = 25
+		kernel_size_ftbt = 50
+		trimap = gen_trimap_with_dilate(mask, kernel_size_tt)
+		dilation = gen_dilate(mask, kernel_size_ftbt)
+		erosion = gen_erosion(mask, kernel_size_ftbt)
+		dilation_subtraction = dilation-mask
+		erosion_subtraction = mask-erosion
 		# Data transformation to generate samples
 		# crop/flip/resize
-		argv = self.transform(ori, mask, fg, bg, trimap, dilation, erosion)
-
+		argv = self.transform(ori, mask, fg, bg, trimap, dilation, erosion, dilation_subtraction, erosion_subtraction)
 		argv_transform = []
 		for item in argv:
 			if item.ndim<3:
@@ -117,8 +119,8 @@ class MattingDataset(torch.utils.data.Dataset):
 				item = torch.from_numpy(item.astype(np.float32)).permute(2, 0, 1)
 			argv_transform.append(item)
 
-		[ori, mask, fg, bg, trimap, dilation, erosion] = argv_transform
-		return ori, mask, fg, bg, trimap, dilation, erosion
+		[ori, mask, fg, bg, trimap, dilation, erosion, dilation_subtraction, erosion_subtraction] = argv_transform
+		return ori, mask, fg, bg, trimap, dilation, erosion, dilation_subtraction, erosion_subtraction
 
 	def __len__(self):
 		return len(self.samples)

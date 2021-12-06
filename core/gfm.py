@@ -107,6 +107,23 @@ class PSPModule(nn.Module):
         bottle = self.bottleneck(torch.cat(priors, 1))
         return self.relu(bottle)
 
+class SELayer(nn.Module):
+    def __init__(self, channel, reduction=4):
+        super(SELayer, self).__init__()
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.fc = nn.Sequential(
+            nn.Linear(channel, channel // reduction, bias=False),
+            nn.ReLU(inplace=True),
+            nn.Linear(channel // reduction, channel, bias=False),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        b, c, _, _ = x.size()
+        y = self.avg_pool(x).view(b, c)
+        y = self.fc(y).view(b, c, 1, 1)
+        return x * y.expand_as(x)
+
 class GFM(nn.Module):
 
     def __init__(self, args):
@@ -156,7 +173,6 @@ class GFM(nn.Module):
             self.decoder3_g = build_decoder(512, 256, 256, 128, True, True)
             self.decoder2_g = build_decoder(256, 128, 128, 64, True, True)
             self.decoder1_g = build_decoder(128, 64, 64, 64, True, False)
-            self.decoder0_g = nn.Sequential(nn.Conv2d(64,self.gd_channel,3,padding=1))
             
             self.bridge_block = build_bb(512, 512, 512)
             self.decoder6_f = build_decoder(1024, 512, 512, 512, True, True)
@@ -165,7 +181,18 @@ class GFM(nn.Module):
             self.decoder3_f = build_decoder(512, 256, 256, 128, True, True)
             self.decoder2_f = build_decoder(256, 128, 128, 64, True, True)
             self.decoder1_f = build_decoder(128, 64, 64, 64, True, False)
-            self.decoder0_f = nn.Sequential(nn.Conv2d(64,1,3,padding=1))
+
+            if self.rosta == 'RIM':
+                self.decoder0_g_tt = nn.Sequential(nn.Conv2d(64,3,3,padding=1))
+                self.decoder0_g_ft = nn.Sequential(nn.Conv2d(64,2,3,padding=1))
+                self.decoder0_g_bt = nn.Sequential(nn.Conv2d(64,2,3,padding=1))
+                self.decoder0_f_tt = nn.Sequential(nn.Conv2d(64,1,3,padding=1))
+                self.decoder0_f_ft = nn.Sequential(nn.Conv2d(64,1,3,padding=1))
+                self.decoder0_f_bt = nn.Sequential(nn.Conv2d(64,1,3,padding=1))
+            else:
+                self.decoder0_g = nn.Sequential(nn.Conv2d(64,self.gd_channel,3,padding=1))
+                self.decoder0_f = nn.Sequential(nn.Conv2d(64,1,3,padding=1))
+
 
         if self.backbone=='r34':
             ##########################
@@ -192,16 +219,26 @@ class GFM(nn.Module):
             self.decoder3_g = build_decoder(512, 256, 256, 128, True, True)
             self.decoder2_g = build_decoder(256, 128, 128, 64, True, True)
             self.decoder1_g = build_decoder(128, 64, 64, 64, True, True)
-            self.decoder0_g = build_decoder(128, 64, 64, self.gd_channel, False, True)
-
+            
             self.bridge_block = build_bb(512, 512, 512)
             self.decoder4_f = build_decoder(1024, 512, 512, 256, True, True)
             self.decoder3_f = build_decoder(512, 256, 256, 128, True, True)
             self.decoder2_f = build_decoder(256, 128, 128, 64, True, True)
             self.decoder1_f = build_decoder(128, 64, 64, 64, True, True)
-            self.decoder0_f = build_decoder(128, 64, 64, 1, False, True)
+            
+            if self.rosta == 'RIM':
+                self.decoder0_g_tt = build_decoder(128, 64, 64, 3, False, True)
+                self.decoder0_g_ft = build_decoder(128, 64, 64, 2, False, True)
+                self.decoder0_g_bt = build_decoder(128, 64, 64, 2, False, True)
+                self.decoder0_f_tt = build_decoder(128, 64, 64, 1, False, True)
+                self.decoder0_f_ft = build_decoder(128, 64, 64, 1, False, True)
+                self.decoder0_f_bt = build_decoder(128, 64, 64, 1, False, True)
+            else:
+                self.decoder0_g = build_decoder(128, 64, 64, self.gd_channel, False, True)
+                self.decoder0_f = build_decoder(128, 64, 64, 1, False, True)
 
-        elif args.backbone=='r101':
+
+        elif self.backbone=='r101':
             ##########################
             ### Backbone - Resnet101
             ##########################
@@ -227,15 +264,25 @@ class GFM(nn.Module):
             self.decoder3_g = build_decoder(2048, 1024, 512, 512, True, True)
             self.decoder2_g = build_decoder(1024, 512, 256, 256, True, True)
             self.decoder1_g = build_decoder(512, 256, 128, 64, True, True)
-            self.decoder0_g = build_decoder(128, 64, 64, self.gd_channel, False, True)
-
+            
             self.decoder4_f = build_decoder(4096, 2048, 1024, 1024, True, True)
             self.decoder3_f = build_decoder(2048, 1024, 512, 512, True, True)
             self.decoder2_f = build_decoder(1024, 512, 256, 256, True, True)
             self.decoder1_f = build_decoder(512, 256, 128, 64, True, True)
-            self.decoder0_f = build_decoder(128, 64, 64, 1, False, True)
+            
+            if self.rosta == 'RIM':
+                self.decoder0_g_tt = build_decoder(128, 64, 64, 3, False, True)
+                self.decoder0_g_ft = build_decoder(128, 64, 64, 2, False, True)
+                self.decoder0_g_bt = build_decoder(128, 64, 64, 2, False, True)
+                self.decoder0_f_tt = build_decoder(128, 64, 64, 1, False, True)
+                self.decoder0_f_ft = build_decoder(128, 64, 64, 1, False, True)
+                self.decoder0_f_bt = build_decoder(128, 64, 64, 1, False, True)
+            else:
+                self.decoder0_g = build_decoder(128, 64, 64, self.gd_channel, False, True)
+                self.decoder0_f = build_decoder(128, 64, 64, 1, False, True)
 
-        elif args.backbone=='d121':
+
+        elif self.backbone=='d121':
             #############################
             ### Encoder part - DESNET121
             #############################
@@ -269,15 +316,29 @@ class GFM(nn.Module):
             self.decoder3_g = build_decoder(512, 256, 256, 128, True, True)
             self.decoder2_g = build_decoder(256, 128, 128, 64, True, True)
             self.decoder1_g = build_decoder(128, 64, 64, 64, True, True)
-            self.decoder0_g = build_decoder(128, 64, 64, self.gd_channel, False, True)
 
             self.bridge_block = build_bb(512, 512, 512)
             self.decoder4_f = build_decoder(1024, 512, 512, 256, True, True)
             self.decoder3_f = build_decoder(768, 256, 256, 128, True, True)
             self.decoder2_f = build_decoder(384, 128, 128, 64, True, True)
             self.decoder1_f = build_decoder(192, 64, 64, 64, True, True)
-            self.decoder0_f = build_decoder(128, 64, 64, 1, False, True)
+            
+            if self.rosta == 'RIM':
+                self.decoder0_g_tt = build_decoder(128, 64, 64, 3, False, True)
+                self.decoder0_g_ft = build_decoder(128, 64, 64, 2, False, True)
+                self.decoder0_g_bt = build_decoder(128, 64, 64, 2, False, True)
+                self.decoder0_f_tt = build_decoder(128, 64, 64, 1, False, True)
+                self.decoder0_f_ft = build_decoder(128, 64, 64, 1, False, True)
+                self.decoder0_f_bt = build_decoder(128, 64, 64, 1, False, True)
+            else:
+                self.decoder0_g = build_decoder(128, 64, 64, self.gd_channel, False, True)
+                self.decoder0_f = build_decoder(128, 64, 64, 1, False, True)
 
+        if self.rosta=='RIM':
+            self.rim = nn.Sequential(
+                nn.Conv2d(3,16,1),
+                SELayer(16),
+                nn.Conv2d(16,1,1))
         
     def forward(self, input):
 
@@ -313,11 +374,27 @@ class GFM(nn.Module):
         d1_g = self.decoder1_g(torch.cat((self.psp2(psp),d2_g),1))
 
         if self.backbone=='r34_2b':
-            d0_g = self.decoder0_g(d1_g)
+            if self.rosta=='RIM':
+                d0_g_tt = self.decoder0_g_tt(d1_g)
+                d0_g_ft = self.decoder0_g_ft(d1_g)
+                d0_g_bt = self.decoder0_g_bt(d1_g)
+            else:
+                d0_g = self.decoder0_g(d1_g)
         else:
-            d0_g = self.decoder0_g(torch.cat((self.psp1(psp),d1_g),1))
+            if self.rosta=='RIM':
+                d0_g_tt = self.decoder0_g_tt(torch.cat((self.psp1(psp),d1_g),1))
+                d0_g_ft = self.decoder0_g_ft(torch.cat((self.psp1(psp),d1_g),1))
+                d0_g_bt = self.decoder0_g_bt(torch.cat((self.psp1(psp),d1_g),1))
+            else:
+                d0_g = self.decoder0_g(torch.cat((self.psp1(psp),d1_g),1))
         
-        glance_sigmoid = F.sigmoid(d0_g)
+        if self.rosta=='RIM':
+            glance_sigmoid_tt = F.sigmoid(d0_g_tt)
+            glance_sigmoid_ft = F.sigmoid(d0_g_ft)
+            glance_sigmoid_bt = F.sigmoid(d0_g_bt)
+        else:
+            glance_sigmoid = F.sigmoid(d0_g)
+
 
         ##########################
         ### Decoder part - FOCUS
@@ -335,16 +412,40 @@ class GFM(nn.Module):
         d2_f = self.decoder2_f(torch.cat((d3_f, e2),1))
         d1_f = self.decoder1_f(torch.cat((d2_f, e1),1))
 
-        if self.backbone == 'r34_2b':
-            d0_f = self.decoder0_f(d1_f)
+        if self.backbone=='r34_2b':
+            if self.rosta=='RIM':
+                d0_f_tt = self.decoder0_f_tt(d1_f)
+                d0_f_ft = self.decoder0_f_ft(d1_f)
+                d0_f_bt = self.decoder0_f_bt(d1_f)
+            else:
+                d0_f = self.decoder0_f(d1_f)
         else:
-            d0_f = self.decoder0_f(torch.cat((d1_f, e0),1))
+            if self.rosta=='RIM':
+                d0_f_tt = self.decoder0_f_tt(torch.cat((d1_f, e0),1))
+                d0_f_ft = self.decoder0_f_ft(torch.cat((d1_f, e0),1))
+                d0_f_bt = self.decoder0_f_bt(torch.cat((d1_f, e0),1))
+            else:
+                d0_f = self.decoder0_f(torch.cat((d1_f, e0),1))
         
-        focus_sigmoid = F.sigmoid(d0_f)
-
+        if self.rosta=='RIM':
+            focus_sigmoid_tt = F.sigmoid(d0_f_tt)
+            focus_sigmoid_ft = F.sigmoid(d0_f_ft)
+            focus_sigmoid_bt = F.sigmoid(d0_f_bt)
+        else:
+            focus_sigmoid = F.sigmoid(d0_f)
+        
         ##########################
         ### Collaborative Matting
         ##########################
-        fusion_sigmoid = collaborative_matting(self.rosta, glance_sigmoid, focus_sigmoid)
+        if self.rosta=='RIM':
+            fusion_sigmoid_tt = collaborative_matting('TT', glance_sigmoid_tt, focus_sigmoid_tt)
+            fusion_sigmoid_ft = collaborative_matting('FT', glance_sigmoid_ft, focus_sigmoid_ft)
+            fusion_sigmoid_bt = collaborative_matting('BT', glance_sigmoid_bt, focus_sigmoid_bt)
+            fusion_sigmoid = torch.cat((fusion_sigmoid_tt,fusion_sigmoid_ft,fusion_sigmoid_bt),1)
+            fusion_sigmoid = self.rim(fusion_sigmoid)
+            return [[glance_sigmoid_tt, focus_sigmoid_tt, fusion_sigmoid_tt],[glance_sigmoid_ft, focus_sigmoid_ft, fusion_sigmoid_ft],[glance_sigmoid_bt, focus_sigmoid_bt, fusion_sigmoid_bt], fusion_sigmoid]
+        else:
+            fusion_sigmoid = collaborative_matting(self.rosta, glance_sigmoid, focus_sigmoid)
+            return glance_sigmoid, focus_sigmoid, fusion_sigmoid
 
-        return glance_sigmoid, focus_sigmoid, fusion_sigmoid
+        

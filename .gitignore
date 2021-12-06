@@ -7,3 +7,4 @@ tensorboard/*
 *.weights
 *.json
 *.log
+core/temp.py
