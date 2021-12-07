@@ -49,8 +49,11 @@ Our code has been tested with Python 3.7.7, Pytorch 1.7.1, Torchvision 0.8.2, CU
 
 2. For the purpose of training on ORI-Track and COMP-Track, we use the foregrounds and backgrounds generated following closed form method as in the paper `Levin, Anat, Dani Lischinski, and Yair Weiss. "A closed-form solution to natural image matting." IEEE transactions on pattern analysis and machine intelligence, 2007`. Some reference implementations can be referred to [here (python)](https://github.com/MarcoForte/closed-form-matting/blob/master/closed_form_matting/solve_foreground_background.py) and [here (matlab)](http://people.csail.mit.edu/alevin/matting.tar.gz). 
 
-3. In order to use the composition route RSSN in COMP-Track, high-resolution backgrounds, you will need to denoise the training images in AM-2k and BG-20k. We follow the paper `Danielyan A, Katkovnik V, Egiazarian K. BM3D frames and variational image deblurring[J]. IEEE Transactions on image processing, 2011` for generating denoise images. You can refer to the [bm3d](https://pypi.org/project/bm3d/) for the installation and implementation. After denoising, make sure that you have saved the results in the folder `AM2K_DATASET_ROOT_PATH+fg_denoise/`, and `BG20K_DATASET_ROOT_PATH+train_denoise/`.
+3. In order to use the composition route RSSN in COMP-Track, high-resolution backgrounds, you will need to denoise the training images in AM-2k and BG-20k. We follow the paper `Danielyan A, Katkovnik V, Egiazarian K. BM3D frames and variational image deblurring[J]. IEEE Transactions on image processing, 2011` for generating denoise images. You can refer to the [bm3d](https://pypi.org/project/bm3d/) for the installation and implementation. After denoising, make sure that you have saved the results in the folder `AM2K_DATASET_ROOT_PATH+fg_denoise/`, and `BG20K_DATASET_ROOT_PATH+train_denoise/`. We also provide the download links of these two datasets as follows for your convenience.
 
+| Dataset | am2k_fg_denoise | bg20k_denoise |
+| :----:| :----: | :----: | 
+|<p>Dataset Link (Google Drive)</p> |[Link](https://drive.google.com/uc?export=download&id=1EIt4tS_ps1L5SPRLFtltj82ZNPSfHslp)|[Link](https://drive.google.com/uc?export=download&id=1SbrMH_171igViYyQpXuBgMYlNGwgbi6-)|
 
 4. In order to use the COMP-Track on COCO datasets, you will need to download the MS COCO datasets from [here](https://cocodataset.org/) and save to path `COCO_DATASET_ROOT_PATH+train/`.
 
