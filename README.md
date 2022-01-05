@@ -1,8 +1,9 @@
-<h1 align="center">Bridging Composite and Real: Towards End-to-end Deep Image Matting [IJCV-2021]</h1>
+<h1 align="center">Bridging Composite and Real: Towards End-to-end Deep Image Matting [IJCV-2022]</h1>
 
 
 <p align="center">
 <a href="https://arxiv.org/pdf/2010.16188.pdf"><img  src="demo/src/icon/arXiv-Paper.svg" ></a>
+<a href="https://link.springer.com/article/10.1007/s11263-021-01541-0"><img  src="demo/src/icon/publication-Paper.svg" ></a>
 <a href="https://colab.research.google.com/drive/1EaQ5h4u9Q_MmDSFTDmFG0ZOeSsFuRTsJ?usp=sharing"><img  src="demo/src/icon/colab-badge.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img  src="demo/src/icon/license-MIT.svg"></a>
 <a href="https://paperswithcode.com/sota/image-matting-on-am-2k"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/end-to-end-animal-image-matting/image-matting-on-am-2k"></a>
@@ -15,7 +16,7 @@
 <h4 align="center">This is the official repository of the paper <a href="https://arxiv.org/abs/2010.16188">Bridging Composite and Real: Towards End-to-end Deep Image Matting</a>.</h4>
 <h5 align="center"><em>Jizhizi Li<sup>1&#8727;</sup>, Jing Zhang<sup>1&#8727;</sup>, Stephen J. Maybank<sup>2</sup>, and Dacheng Tao<sup>1</sup></em></h5>
 <h6 align="center">1 The University of Sydney, Sydney, Australia; 2 Birkbeck College, University of London, U.K.</h6>
-<h6 align="center">IJCV 2021 (arXiv 2010.16188)</h6>
+<h6 align="center">IJCV 2022 (DOI 10.1007/s11263-021-01541-0)</h6>
 
 
 <p align="center">
@@ -138,14 +139,13 @@ We show some sample images from the internet, the predicted alpha mattes, and th
 
 If you are interested in our work, please consider citing the following:
 ```
-@article{li2021matting,
+@article{li2022matting,
   title={Bridging Composite and Real: Towards End-to-end Deep Image Matting},
   author={Li, Jizhizi and Zhang, Jing and Maybank, Stephen J and Tao, Dacheng},
   journal={International Journal of Computer Vision},
   publisher={Springer},
   ISSN={1573-1405},
-  year={},
-  pages={}
+  year={2022}
 }
 ```
 
