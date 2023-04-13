@@ -139,13 +139,15 @@ We show some sample images from the internet, the predicted alpha mattes, and th
 
 If you are interested in our work, please consider citing the following:
 ```
-@article{li2022matting,
-  title={Bridging Composite and Real: Towards End-to-end Deep Image Matting},
+@article{li2022bridging,
+  title={Bridging composite and real: towards end-to-end deep image matting},
   author={Li, Jizhizi and Zhang, Jing and Maybank, Stephen J and Tao, Dacheng},
   journal={International Journal of Computer Vision},
-  publisher={Springer},
-  ISSN={1573-1405},
-  year={2022}
+  volume={130},
+  number={2},
+  pages={246--266},
+  year={2022},
+  publisher={Springer}
 }
 ```
 
@@ -154,11 +156,21 @@ This project is under the MIT license. For further questions, please contact <st
 
 ## Relevant Projects
 
+<a href="https://github.com/ViTAE-Transformer/ViTAE-Transformer-Matting"><img  src="https://shields.io/badge/-A_list_of_our_works_in_matting-9cf?style=for-the-badge"></a>
+</p>
+
 [1] <strong>Deep Automatic Natural Image Matting, IJCAI, 2021</strong> | [Paper](https://www.ijcai.org/proceedings/2021/0111) | [Github](https://github.com/JizhiziLi/AIM)
 <br><em>&ensp; &ensp; &ensp;Jizhizi Li, Jing Zhang, and Dacheng Tao</em>
 
 [2] <strong>Privacy-Preserving Portrait Matting, ACM MM, 2021</strong> | [Paper](https://dl.acm.org/doi/pdf/10.1145/3474085.3475512) | [Github](https://github.com/JizhiziLi/P3M)
 <br><em>&ensp; &ensp; &ensp;Jizhizi Li<sup>&#8727;</sup>, Sihan Ma<sup>&#8727;</sup>, Jing Zhang, and Dacheng Tao</em>
 
-[3] <strong>Rethinking Portrait Matting with Pirvacy Preserving, arXiv, 2022</strong> | [Paper](https://arxiv.org/abs/2203.16828) | [Github](https://github.com/ViTAE-Transformer/ViTAE-Transformer-Matting)
-<br><em>&ensp; &ensp; &ensp;Sihan Ma<sup>&#8727;</sup>, Jizhizi Li<sup>&#8727;</sup>, Jing Zhang, He Zhang, and Dacheng Tao</em>
+[3] <strong>Referring Image Matting, CVPR, 2023</strong> | [Paper](https://arxiv.org/pdf/2206.05149.pdf) | [Github](https://github.com/JizhiziLi/RIM)
+<br><em>&ensp; &ensp; &ensp;Jizhizi Li, Jing Zhang, and Dacheng Tao</em>
+
+[4] <strong>Rethinking Portrait Matting with Privacy Preserving, IJCV, 2023</strong> | [Paper](https://arxiv.org/pdf/2203.16828.pdf) | [Github](https://github.com/ViTAE-Transformer/P3M-Net)
+<br><em>&ensp; &ensp; &ensp;Sihan Ma<sup>&#8727;</sup>, Jizhizi Li<sup>&#8727;</sup>, Jing Zhang, He Zhang, Dacheng Tao</em>
+
+[5] <strong>Deep Image Matting: A Comprehensive Survey, ArXiv, 2023</strong> | [Paper](https://arxiv.org/abs/2304.04672) | [Github](https://github.com/jizhiziLi/matting-survey)
+<br><em>&ensp; &ensp; &ensp;Jizhizi Li, Jing Zhang, and Dacheng Tao</em>
+
